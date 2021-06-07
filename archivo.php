@@ -18,9 +18,11 @@ and open the template in the editor.
             if($datos=$db->fetch_row($query)){
                 if($datos['nombre_archivo']==""){?>
         <p>NO tiene archivos</p>
-                <?php }else{ ?>
-        <iframe src="archivos/<?php echo $datos['nombre_archivo']; ?>"></iframe>
-                
-                <?php } } ?>
+                <?php }else{ 
+
+        header('content-type: application/pdf');
+        readfile('archivos/'.$datos['nombre_archivo']);
+                }
+                 }  ?>
     </body>
 </html>
